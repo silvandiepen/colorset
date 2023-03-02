@@ -30,13 +30,14 @@ export const colorToCustomProperties = (key: string, value: string) => {
   }
   if (isHSL(value) || isHSLA(value)) {
     const c = toHSLA(value);
-    return `hsla(var(--${key}-h, ${c.h}),var(--${key}-s, ${c.s}),var(--${key}-l, ${c.l}),var(--${key}-a, ${c.a}))`;
+    return `hsla(var(--${key}-h, ${c.h}deg),var(--${key}-s, ${c.s}%),var(--${key}-l, ${c.l}%),var(--${key}-a, ${c.a}))`;
   }
   if (isHSV(value) || isHSVA(value)) {
     const c = toHSVA(value);
-    return `hsva(var(--${key}-h, ${c.h}),var(--${key}-s, ${c.s}),var(--${key}-v, ${c.v}),var(--${key}-a, ${c.a}))`;
+    return `hsva(var(--${key}-h, ${c.h}deg),var(--${key}-s, ${c.s}%),var(--${key}-v, ${c.v}%),var(--${key}-a, ${c.a}))`;
   }
-  return value;
+   return SassValue(value);
+  // return value;
 };
 
 const isEqual = (object1: Object, object2: Object): boolean =>
@@ -75,6 +76,7 @@ export const cssVariables = (args: CssVariablesArgs): string => {
   vars.forEach((v: [string, string]) => {
     varString += `--${v[0]}: ${v[1]};\n`;
   });
+
 
   return varString;
 };

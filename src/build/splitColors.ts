@@ -25,9 +25,9 @@ export const splitColors = (args: SplitColorsArgs): ColorData => {
 
       switch (config.type) {
         case ColorType.HSLA:
-          splitData[`${key}-h`] = (c as HSLA).h;
-          splitData[`${key}-s`] = (c as HSLA).s;
-          splitData[`${key}-l`] = (c as HSLA).l;
+          splitData[`${key}-h`] = `${(c as HSLA).h}deg`;
+          splitData[`${key}-s`] = `${(c as HSLA).s}%`;
+          splitData[`${key}-l`] = `${(c as HSLA).l}%`;
           if ((c as HSLA).a) splitData[`${key}-a`] = (c as HSLA).a;
           break;
         case ColorType.RGBA:
@@ -43,9 +43,9 @@ export const splitColors = (args: SplitColorsArgs): ColorData => {
           splitData[`${key}-k`] = (c as CMYK).k;
           break;
         case ColorType.HSVA:
-          splitData[`${key}-h`] = (c as HSVA).h;
-          splitData[`${key}-s`] = (c as HSVA).s;
-          splitData[`${key}-v`] = (c as HSVA).v;
+          splitData[`${key}-h`] = `${(c as HSVA).h}deg`;
+          splitData[`${key}-s`] = `${(c as HSVA).s}%`;
+          splitData[`${key}-v`] = `${(c as HSVA).v}%`;
           if ((c as HSVA).a) splitData[`${key}-a`] = (c as HSVA).a;
           break;
         default:

@@ -21,13 +21,13 @@ describe("Split Colors", () => {
       type: ColorType.HSLA,
     });
     expect(input).toEqual({
-      "primary-h": 10,
-      "primary-s": 20,
-      "primary-l": 30,
+      "primary-h": "10deg",
+      "primary-s": "20%",
+      "primary-l": "30%",
       "primary-a": 1,
-      "primary-50-h": 10,
-      "primary-50-s": 20,
-      "primary-50-l": 30,
+      "primary-50-h": "10deg",
+      "primary-50-s": "20%",
+      "primary-50-l": "30%",
       "primary-50-a": 1,
     });
   });

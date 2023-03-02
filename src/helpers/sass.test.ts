@@ -2,6 +2,7 @@ import {
   isCssFunction,
   isCssPropertyValue,
   isCssNumber,
+  isCssUnit,
   isCssBoolean,
   SassValue,
 } from "./sass";
@@ -56,6 +57,44 @@ describe("Sass - isCssNumber", () => {
     expect(isCssNumber("a")).toBeFalsy();
   });
 });
+describe("Sass - isCssUnit", () => {
+  it('"0" is not a css number', () => {
+    expect(isCssUnit("0")).toBeFalsy();
+  });
+  it("0 is not css number", () => {
+    expect(isCssUnit(0)).toBeFalsy();
+  });
+  it("'0.5' is not a css number", () => {
+    expect(isCssUnit("0.5")).toBeFalsy();
+  });
+  it('"5" is not a css number', () => {
+    expect(isCssUnit("5")).toBeFalsy();
+  });
+  it("'a' is not a css number", () => {
+    expect(isCssUnit("a")).toBeFalsy();
+  });
+  it("'Arem' is not a css number", () => {
+    expect(isCssUnit("arem")).toBeFalsy();
+  });
+  it("'1rem' is not a css number", () => {
+    expect(isCssUnit("1rem")).toBeTruthy();
+  });
+  it("'1%' is not a css number", () => {
+    expect(isCssUnit("1%")).toBeTruthy();
+  });
+  it("'0%' is not a css number", () => {
+    expect(isCssUnit("0%")).toBeTruthy();
+  });
+  it("'0deg' is not a css number", () => {
+    expect(isCssUnit("0deg")).toBeTruthy();
+  });
+  it("'0.5rem' is not a css number", () => {
+    expect(isCssUnit("0.5rem")).toBeTruthy();
+  });
+  it("'-0.5rem' is not a css number", () => {
+    expect(isCssUnit("-0.5rem")).toBeTruthy();
+  });
+});
 
 describe("Sass - isCssBoolean", () => {
   it('"true" is a css boolean', () => {
@@ -87,5 +126,8 @@ describe("Sass - SassValue", () => {
   });
   it("['test','of','array'] to become a sass value", () => {
     expect(SassValue(["test", "of", "array"])).toBe(`(test, of, array)`);
+  });
+  it("Converts an object to a color - hsla", () => {
+    expect(SassValue({ h: 0, s: 0, l: 0 })).toBe("hsl(0deg, 0%, 0%)");
   });
 });

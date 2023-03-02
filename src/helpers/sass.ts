@@ -1,4 +1,4 @@
-import { cssFunctions, cssValues } from "../data/css";
+import { cssFunctions, cssValues, cssUnits } from "../data/css";
 import { isCOLOR, toString } from "@sil/color";
 import { isObject, isString } from "./is";
 
@@ -19,6 +19,14 @@ export const isCssNumber = (str: string | number): boolean => {
   return isNumber;
 };
 
+export const isCssUnit = (str: string | number) => {
+  if (typeof str == "number") return false;
+  const value = parseFloat(str);
+  const unit = str.replace(`${value}`, "").trim();
+
+  return cssUnits.includes(unit);
+};
+
 export const isCssBoolean = (str: string): boolean =>
   str == "true" || str == "false";
 
@@ -31,6 +39,7 @@ export const SassValue = (input: any) => {
     (typeof input == "string" && isCssFunction(input)) ||
     (typeof input == "string" && isCssPropertyValue(input)) ||
     (typeof input == "string" && isCssBoolean(input)) ||
+    (typeof input == "string" && isCssUnit(input)) ||
     (typeof input == "string" && input.startsWith("'"))
   ) {
     convertedInput = `${input}`;
