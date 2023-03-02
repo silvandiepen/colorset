@@ -1,6 +1,6 @@
 {
   "name": "@sil/colorset",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Create a colorset",
   "main": "dist/index.js",
   "scripts": {
