@@ -2,15 +2,15 @@ import { ColorType } from "@sil/color";
 import { createColorSet } from "./createColorSet";
 import { cssVariables } from "./cssVariables";
 
-describe("Css Variables", () => {
-  const baseColors = {
-    dark: "#111111",
-    light: "#fafafa",
-    primary: "#ff0000",
-    secondary: "#00ff00",
-    tertiary: "#3a5a6a",
-  };
+const baseColors = {
+  dark: "#111111",
+  light: "#fafafa",
+  primary: "#ff0000",
+  secondary: "#00ff00",
+  tertiary: "#3a5a6a",
+};
 
+describe("Css Variables", () => {
   it("Should convert a basic set of colors", async () => {
     const data = await createColorSet({
       data: {
@@ -35,8 +35,8 @@ describe("Css Variables", () => {
       "primary-50": {
         a: 1,
         h: 0,
-        l: 25,
-        s: 33,
+        l: 29,
+        s: 34,
       },
       "primary-50-text": {
         a: 1,
@@ -108,13 +108,13 @@ describe("Css Variables", () => {
 --tertiary: hsla(var(--tertiary-h, 202deg),var(--tertiary-s, 14%),var(--tertiary-l, 33%),var(--tertiary-a, 1));
 --background: var(--dark, hsla(0deg, 0%, 7%, 1));
 --foreground: var(--light, hsla(0deg, 0%, 98%, 1));
---dark-10: hsla(var(--dark-10-h, 0deg),var(--dark-10-s, 0%),var(--dark-10-l, 1%),var(--dark-10-a, 1));
---light-10: hsla(var(--light-10-h, 0deg),var(--light-10-s, 0%),var(--light-10-l, 10%),var(--light-10-a, 1));
---primary-10: hsla(var(--primary-10-h, 0deg),var(--primary-10-s, 5%),var(--primary-10-l, 5%),var(--primary-10-a, 1));
---secondary-10: hsla(var(--secondary-10-h, 120deg),var(--secondary-10-s, 5%),var(--secondary-10-l, 5%),var(--secondary-10-a, 1));
---tertiary-10: hsla(var(--tertiary-10-h, 180deg),var(--tertiary-10-s, 1%),var(--tertiary-10-l, 3%),var(--tertiary-10-a, 1));
---background-10: hsla(var(--background-10-h, 0deg),var(--background-10-s, 0%),var(--background-10-l, 1%),var(--background-10-a, 1));
---foreground-10: hsla(var(--foreground-10-h, 0deg),var(--foreground-10-s, 0%),var(--foreground-10-l, 10%),var(--foreground-10-a, 1));
+--dark-10: hsla(var(--dark-10-h, 0deg),var(--dark-10-s, 0%),var(--dark-10-l, 16%),var(--dark-10-a, 1));
+--light-10: hsla(var(--light-10-h, 0deg),var(--light-10-s, 0%),var(--light-10-l, 89%),var(--light-10-a, 1));
+--primary-10: hsla(var(--primary-10-h, 0deg),var(--primary-10-s, 83%),var(--primary-10-l, 46%),var(--primary-10-a, 1));
+--secondary-10: hsla(var(--secondary-10-h, 120deg),var(--secondary-10-s, 83%),var(--secondary-10-l, 46%),var(--secondary-10-a, 1));
+--tertiary-10: hsla(var(--tertiary-10-h, 198deg),var(--tertiary-10-s, 12%),var(--tertiary-10-l, 30%),var(--tertiary-10-a, 1));
+--background-10: hsla(var(--background-10-h, 0deg),var(--background-10-s, 0%),var(--background-10-l, 16%),var(--background-10-a, 1));
+--foreground-10: hsla(var(--foreground-10-h, 0deg),var(--foreground-10-s, 0%),var(--foreground-10-l, 89%),var(--foreground-10-a, 1));
 --dark-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --light-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --primary-text: var(--dark, hsla(0deg, 0%, 7%, 1));
@@ -123,12 +123,12 @@ describe("Css Variables", () => {
 --background-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --foreground-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --dark-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---light-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
+--light-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --primary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---secondary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
+--secondary-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --tertiary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --background-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---foreground-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
+--foreground-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --dark-h: 0deg;
 --dark-s: 0%;
 --dark-l: 7%;
@@ -176,13 +176,13 @@ describe("Css Variables", () => {
 --tertiary: hsla(var(--tertiary-h, 202deg),var(--tertiary-s, 14%),var(--tertiary-l, 33%),var(--tertiary-a, 1));
 --background: var(--light, hsla(0deg, 0%, 98%, 1));
 --foreground: var(--dark, hsla(0deg, 0%, 7%, 1));
---dark-10: hsla(var(--dark-10-h, 0deg),var(--dark-10-s, 0%),var(--dark-10-l, 1%),var(--dark-10-a, 1));
---light-10: hsla(var(--light-10-h, 0deg),var(--light-10-s, 0%),var(--light-10-l, 10%),var(--light-10-a, 1));
---primary-10: hsla(var(--primary-10-h, 0deg),var(--primary-10-s, 5%),var(--primary-10-l, 5%),var(--primary-10-a, 1));
---secondary-10: hsla(var(--secondary-10-h, 120deg),var(--secondary-10-s, 5%),var(--secondary-10-l, 5%),var(--secondary-10-a, 1));
---tertiary-10: hsla(var(--tertiary-10-h, 180deg),var(--tertiary-10-s, 1%),var(--tertiary-10-l, 3%),var(--tertiary-10-a, 1));
---background-10: hsla(var(--background-10-h, 0deg),var(--background-10-s, 0%),var(--background-10-l, 10%),var(--background-10-a, 1));
---foreground-10: hsla(var(--foreground-10-h, 0deg),var(--foreground-10-s, 0%),var(--foreground-10-l, 1%),var(--foreground-10-a, 1));
+--dark-10: hsla(var(--dark-10-h, 0deg),var(--dark-10-s, 0%),var(--dark-10-l, 16%),var(--dark-10-a, 1));
+--light-10: hsla(var(--light-10-h, 0deg),var(--light-10-s, 0%),var(--light-10-l, 89%),var(--light-10-a, 1));
+--primary-10: hsla(var(--primary-10-h, 0deg),var(--primary-10-s, 100%),var(--primary-10-l, 55%),var(--primary-10-a, 1));
+--secondary-10: hsla(var(--secondary-10-h, 120deg),var(--secondary-10-s, 100%),var(--secondary-10-l, 55%),var(--secondary-10-a, 1));
+--tertiary-10: hsla(var(--tertiary-10-h, 198deg),var(--tertiary-10-s, 14%),var(--tertiary-10-l, 39%),var(--tertiary-10-a, 1));
+--background-10: hsla(var(--background-10-h, 0deg),var(--background-10-s, 0%),var(--background-10-l, 89%),var(--background-10-a, 1));
+--foreground-10: hsla(var(--foreground-10-h, 0deg),var(--foreground-10-s, 0%),var(--foreground-10-l, 16%),var(--foreground-10-a, 1));
 --dark-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --light-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --primary-text: var(--dark, hsla(0deg, 0%, 7%, 1));
@@ -191,11 +191,11 @@ describe("Css Variables", () => {
 --background-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --foreground-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --dark-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---light-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---primary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---secondary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
+--light-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--primary-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--secondary-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --tertiary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---background-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
+--background-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --foreground-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --dark-h: 0deg;
 --dark-s: 0%;
@@ -228,5 +228,51 @@ describe("Css Variables", () => {
 `;
 
     expect(input).toBe(expected);
+  });
+});
+
+describe("Compare dark and lightmode", () => {
+  let inputDarkmode = null;
+  let inputLightmode = null;
+  let dataDarkmode = null;
+  let dataLightmode = null;
+
+  beforeAll(async () => {
+    dataDarkmode = await createColorSet({
+      data: baseColors,
+      shades: [10,90],
+      type: ColorType.HSLA,
+      mix: [baseColors.light, baseColors.dark],
+    });
+    inputDarkmode = cssVariables({ data: dataDarkmode });
+    dataLightmode = await createColorSet({
+      data: baseColors,
+      shades: [10,90],
+      type: ColorType.HSLA,
+      mix: [baseColors.dark, baseColors.light],
+    });
+    inputLightmode = cssVariables({ data: dataLightmode });
+  });
+
+  it("Dark !== Light", () => {
+    expect(dataDarkmode).not.toEqual(dataLightmode);
+  });
+  it("Dark !== Light", () => {
+    expect(inputDarkmode).not.toEqual(inputLightmode);
+  });
+  it("dark.background !== light.background", () => {
+    expect(dataDarkmode["background"]).not.toEqual(dataLightmode["background"]);
+  });
+  it("dark.background == light.foreground", () => {
+    expect(dataDarkmode["background"]).toEqual(dataLightmode["foreground"]);
+  });
+  it("dark.background == light.foreground", () => {
+    expect(dataDarkmode["foreground"]).toEqual(dataLightmode["background"]);
+  });
+  it("dark.primary == light.primary", () => {
+    expect(dataDarkmode["primary"]).toEqual(dataLightmode["primary"]);
+  });
+  it("dark.primary.10 !== light.primary.10", () => {
+    expect(dataDarkmode["primary-10"]).not.toEqual(dataLightmode["primary-10"]);
   });
 });

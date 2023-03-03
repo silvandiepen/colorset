@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest",
+    "test": "npm run test:run && jest",
+    "test:run": "npm run build && node ./dist/test/run.js",
     "prepublishOnly": "npm run build && npm run test"
   },
   "keywords": [

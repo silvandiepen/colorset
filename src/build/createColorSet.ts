@@ -16,6 +16,7 @@ interface CreateColorSetArgs {
     shades: boolean;
     text: boolean;
   };
+  debug?: boolean;
 }
 const defaultCreateColorSet: CreateColorSetArgs = {
   data: {},
@@ -26,6 +27,7 @@ const defaultCreateColorSet: CreateColorSetArgs = {
     shades: false,
     text: false,
   },
+  debug: false
 };
 
 const hello = async (...args: any) => {
@@ -43,6 +45,7 @@ export const createColorSet = async (
       const groundData = await asyncDefineBackAndForeground({
         data: colors,
         mix: config.mix,
+        debug: config.debug
       });
       return { ...colors, ...groundData };
     })
@@ -50,17 +53,25 @@ export const createColorSet = async (
       const colors = { ...config.data, ...data };
       const shadeColors = await asyncShadeColors({
         data: colors,
+        mix: config.mix,
         shades: config.shades,
+        debug: config.debug
       });
       return { ...colors, ...shadeColors };
     })
     .then(async (data) => {
       const colors = { ...config.data, ...data };
-      const textData = await asyncTextColors({ data: colors });
+      const textData = await asyncTextColors({ 
+        data: colors,
+        debug: config.debug 
+      });
       return { ...colors, ...textData };
     })
     .then((data) => {
-      return convertToType({ data, type: args.type });
+      return convertToType({ 
+        data, type: args.type,
+        debug: config.debug 
+      });
     })
     .then(async (data) => {
       const filters = [];
@@ -68,7 +79,10 @@ export const createColorSet = async (
         filters.push(...config.shades.map((s) => `-${s}`));
       if (!config.split.text) filters.push("-text");
 
-      const splitData = await asyncSplitColors({ data, filters });
+      const splitData = await asyncSplitColors({ 
+        data, filters,
+        debug: config.debug 
+      });
       return { ...data, ...splitData };
     });
   return colorSet;

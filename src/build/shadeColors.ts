@@ -1,11 +1,22 @@
 import { ColorData, COLOR, ColorMode } from "./types";
-import { toType, mix, ColorType, toRGB, getLightness, RGB } from "@sil/color";
+import {
+  toType,
+  mix,
+  ColorType,
+  toRGB,
+  getLightness,
+  RGB,
+  toHex,
+} from "@sil/color";
+
+import chalk from "chalk";
 
 interface ShadeColorsArgs {
   data: ColorData;
   shades: number[];
   mix?: [COLOR, COLOR];
   type?: ColorType;
+  debug?: boolean;
 }
 
 const defaultShadeColorsArgs: ShadeColorsArgs = {
@@ -13,6 +24,7 @@ const defaultShadeColorsArgs: ShadeColorsArgs = {
   shades: [],
   mix: ["#000000", "#ffffff"],
   type: ColorType.HSLA,
+  debug: false,
 };
 
 const defineMixColor = (args: {
@@ -59,7 +71,7 @@ export const shadeColors = (args: ShadeColorsArgs): ColorData => {
   const config = { ...defaultShadeColorsArgs, ...args };
   if (!config.shades.length) return config.data;
 
-  let shapeData: ColorData = {};
+  let shadeData: ColorData = {};
 
   Object.keys(config.data).forEach((color) => {
     const mixColors = defineMixColor({
@@ -67,20 +79,34 @@ export const shadeColors = (args: ShadeColorsArgs): ColorData => {
       mix: [toRGB(config.mix[0]), toRGB(config.mix[1])],
     });
 
+    // const mixColors = config.mix;
+
+
     const colorValue = toRGB(config.data[color] as COLOR);
     let mixColor = toRGB(mixColors[0] as COLOR);
 
     if (JSON.stringify(mixColor) == JSON.stringify(colorValue))
       mixColor = toRGB(mixColors[1] as COLOR);
 
+    const b = chalk.hex(toHex(colorValue));
+    const m = chalk.hex(toHex(mixColor));
+
     config.shades.forEach((shade) => {
-      shapeData[`${color}-${shade}`] = toType(
-        mix(mixColor, toRGB(colorValue), shade),
+      const newColor = toType(
+        mix(toRGB(colorValue), mixColor, shade),
         config.type
       );
+      const newKey = `${color}-${shade}`;
+      shadeData[newKey] = newColor;
+
+      if (config.debug) {
+        const c = chalk.hex(toHex(newColor));
+        console.log(`${b("████")} * (${m("████")} * ${shade}) = ${c("████")}`);
+      }
     });
   });
-  return shapeData;
+
+  return shadeData;
 };
 
 export const asyncShadeColors = async (

@@ -4,10 +4,12 @@ import { ColorData } from "./types";
 interface TextColorsArgs {
   data: ColorData;
   type?: ColorType;
+  debug?: boolean;
 }
 const defaultTextColorsArgs: TextColorsArgs = {
   data: {},
   type: ColorType.HSLA,
+  debug: false,
 };
 
 export const textColors = (args: TextColorsArgs): ColorData => {

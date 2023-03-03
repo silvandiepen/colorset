@@ -5,11 +5,13 @@ interface SplitColorsArgs {
   data: ColorData;
   type?: ColorType;
   filters?: string[];
+  debug?: boolean;
 }
 const defaultSplitColorsArgs = {
   data: {},
   type: ColorType.HSLA,
   filters: [],
+  debug: false
 } as SplitColorsArgs;
 
 export const splitColors = (args: SplitColorsArgs): ColorData => {

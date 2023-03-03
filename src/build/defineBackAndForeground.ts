@@ -4,10 +4,12 @@ import { ColorData } from "./types";
 interface DefineBackAndForegroundArgs {
   data: ColorData;
   mix: [COLOR, COLOR];
+  debug?: boolean;
 }
 const defaultDefineBackAndForegroundArgs: DefineBackAndForegroundArgs = {
   data: {},
   mix: ["#ffffff", "#000000"],
+  debug: false,
 };
 
 export const defineBackAndForeground = (

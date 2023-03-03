@@ -16,11 +16,13 @@ interface CssVariablesArgs {
   data: ColorData;
   prefix?: string;
   colorToProps?: boolean;
+  debug?:boolean;
 }
 const defaultCssVariablesArgs = {
   data: {},
   prefix: "",
   colorToProps: true,
+  debug: false
 };
 
 export const colorToCustomProperties = (key: string, value: string) => {
