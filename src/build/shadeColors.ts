@@ -1,5 +1,5 @@
 import { ColorData, COLOR, ColorMode } from "./types";
-import { toType, mix, ColorType, toRGB, getLightness } from "@sil/color";
+import { toType, mix, ColorType, toRGB, getLightness, RGB } from "@sil/color";
 
 interface ShadeColorsArgs {
   data: ColorData;
@@ -17,31 +17,35 @@ const defaultShadeColorsArgs: ShadeColorsArgs = {
 
 const defineMixColor = (args: {
   data: ColorData;
-  mixInput: [COLOR, COLOR];
-}) => {
-  let mix = args.mixInput[0];
-  let altMix = args.mixInput[1];
+  mix: [RGB, RGB];
+}): [RGB, RGB] => {
+  let mixBase = args.mix[0];
+  let mixAlt = args.mix[1];
 
   const mode =
-    getLightness(mix) > getLightness(altMix) ? ColorMode.LIGHT : ColorMode.DARK;
+    getLightness(mixBase) > getLightness(mixAlt)
+      ? ColorMode.LIGHT
+      : ColorMode.DARK;
 
   if (
     args.data.dark &&
     args.data.light &&
-    mix == defaultShadeColorsArgs.mix[0] &&
-    altMix == defaultShadeColorsArgs.mix[1]
+    mixBase == defaultShadeColorsArgs.mix[0] &&
+    mixAlt == defaultShadeColorsArgs.mix[1]
   ) {
+    const dark = toRGB(args.data.dark as COLOR);
+    const light = toRGB(args.data.light as COLOR);
+
     switch (mode) {
       case ColorMode.DARK:
-        return [args.data.dark, args.data.light];
+        return [dark, light];
       case ColorMode.LIGHT:
-        return [args.data.light, args.data.dark];
+        return [light, dark];
     }
   }
 
-  return [mix, altMix];
+  return args.mix;
 };
-
 /*
 
 Create all shapes based on your colors. 
@@ -60,17 +64,18 @@ export const shadeColors = (args: ShadeColorsArgs): ColorData => {
   Object.keys(config.data).forEach((color) => {
     const mixColors = defineMixColor({
       data: config.data,
-      mixInput: config.mix,
+      mix: [toRGB(config.mix[0]), toRGB(config.mix[1])],
     });
 
-    const colorValue = toType(config.data[color] as COLOR, config.type);
-    let mixColor = toType(mixColors[0] as COLOR, config.type);
+    const colorValue = toRGB(config.data[color] as COLOR);
+    let mixColor = toRGB(mixColors[0] as COLOR);
+
     if (JSON.stringify(mixColor) == JSON.stringify(colorValue))
-      mixColor = toType(mixColors[1] as COLOR, config.type);
+      mixColor = toRGB(mixColors[1] as COLOR);
 
     config.shades.forEach((shade) => {
       shapeData[`${color}-${shade}`] = toType(
-        mix(toRGB(colorValue), toRGB(mixColor), shade),
+        mix(mixColor, toRGB(colorValue), shade),
         config.type
       );
     });

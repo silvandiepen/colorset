@@ -23,6 +23,6 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@sil/color": "^0.4.7"
+    "@sil/color": "^0.4.8"
   }
 }

@@ -37,7 +37,6 @@ export const colorToCustomProperties = (key: string, value: string) => {
     return `hsva(var(--${key}-h, ${c.h}deg),var(--${key}-s, ${c.s}%),var(--${key}-v, ${c.v}%),var(--${key}-a, ${c.a}))`;
   }
    return SassValue(value);
-  // return value;
 };
 
 const isEqual = (object1: Object, object2: Object): boolean =>
