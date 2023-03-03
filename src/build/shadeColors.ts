@@ -93,7 +93,7 @@ export const shadeColors = (args: ShadeColorsArgs): ColorData => {
 
     config.shades.forEach((shade) => {
       const newColor = toType(
-        mix(toRGB(colorValue), mixColor, shade),
+        mix(mixColor, toRGB(colorValue), shade),
         config.type
       );
       const newKey = `${color}-${shade}`;

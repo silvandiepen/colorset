@@ -50,22 +50,22 @@ describe("Shades", () => {
 
     const expected = {
       "primary-25": toHSLA(
-        mix(toRGB(baseColors.primary as COLOR), mixColor, 25)
+        mix(mixColor, toRGB(baseColors.primary as COLOR), 25)
       ),
       "primary-50": toHSLA(
-        mix(toRGB(baseColors.primary as COLOR), mixColor, 50)
+        mix(mixColor, toRGB(baseColors.primary as COLOR), 50)
       ),
       "primary-75": toHSLA(
-        mix(toRGB(baseColors.primary as COLOR), mixColor, 75)
+        mix(mixColor, toRGB(baseColors.primary as COLOR), 75)
       ),
       "secondary-25": toHSLA(
-        mix(toRGB(baseColors.secondary as COLOR), mixColor, 25)
+        mix(mixColor, toRGB(baseColors.secondary as COLOR), 25)
       ),
       "secondary-50": toHSLA(
-        mix(toRGB(baseColors.secondary as COLOR), mixColor, 50)
+        mix(mixColor, toRGB(baseColors.secondary as COLOR), 50)
       ),
       "secondary-75": toHSLA(
-        mix(toRGB(baseColors.secondary as COLOR), mixColor, 75)
+        mix(mixColor, toRGB(baseColors.secondary as COLOR), 75)
       ),
     };
 
@@ -82,73 +82,73 @@ describe("Shades", () => {
       "dark-10": {
         h: 0,
         s: 0,
-        l: 16,
+        l: 91,
         a: 1,
       },
       "dark-30": {
         h: 0,
         s: 0,
-        l: 35,
+        l: 72,
         a: 1,
       },
       "dark-60": {
         h: 0,
         s: 0,
-        l: 63,
+        l: 44,
         a: 1,
       },
       "light-10": {
         h: 0,
         s: 0,
-        l: 85,
+        l: 15,
         a: 1,
       },
       "light-30": {
         h: 0,
         s: 0,
-        l: 68,
+        l: 33,
         a: 1,
       },
       "light-60": {
         h: 0,
         s: 0,
-        l: 42,
+        l: 59,
         a: 1,
       },
       "primary-10": {
         h: 240,
-        l: 46,
-        s: 83,
+        l:11,
+        s: 6,
         a: 1,
       },
       "primary-30": {
         h: 240,
-        l: 37,
-        s: 56,
+        l: 20,
+        s: 19,
         a: 1,
       },
       "primary-60": {
         h: 240,
-        l: 24,
-        s: 26,
+        l: 33,
+        s: 45,
         a: 1,
       },
       "secondary-10": {
         h: 0,
-        l: 46,
-        s: 83,
+        l: 11,
+        s: 6,
         a: 1,
       },
       "secondary-30": {
         h: 0,
-        l: 37,
-        s: 56,
+        l: 20,
+        s: 19,
         a: 1,
       },
       "secondary-60": {
         h: 0,
-        l: 24,
-        s: 26,
+        l: 33,
+        s: 45,
         a: 1,
       },
     });
@@ -233,32 +233,32 @@ describe("Compare dark and lightmode", () => {
 
   it("primary-10 darkmode", () => {
     expect(dataDarkmode["primary-10"]).toEqual(
-      toHSLA(mix(toRGB(baseColors.primary as COLOR), toRGB(dark), 10))
+      toHSLA(mix(toRGB(dark), toRGB(baseColors.primary as COLOR), 10))
     );
   });
   it("primary-50 darkmode", () => {
     expect(dataDarkmode["primary-50"]).toEqual(
-      toHSLA(mix(toRGB(baseColors.primary as COLOR), toRGB(dark), 50))
+      toHSLA(mix(toRGB(dark), toRGB(baseColors.primary as COLOR), 50))
     );
   });
   it("primary-90 darkmode", () => {
     expect(dataDarkmode["primary-90"]).toEqual(
-      toHSLA(mix(toRGB(baseColors.primary as COLOR), toRGB(dark), 90))
+      toHSLA(mix(toRGB(dark), toRGB(baseColors.primary as COLOR), 90))
     );
   });
   it("primary-10 lightmode", () => {
     expect(dataLightmode["primary-10"]).toEqual(
-      toHSLA(mix(toRGB(baseColors.primary as COLOR), toRGB(light), 10))
+      toHSLA(mix(toRGB(light), toRGB(baseColors.primary as COLOR), 10))
     );
   });
   it("primary-50 lightmode", () => {
     expect(dataLightmode["primary-50"]).toEqual(
-      toHSLA(mix(toRGB(baseColors.primary as COLOR), toRGB(light), 50))
+      toHSLA(mix(toRGB(light), toRGB(baseColors.primary as COLOR), 50))
     );
   });
   it("primary-90 lightmode", () => {
     expect(dataLightmode["primary-90"]).toEqual(
-      toHSLA(mix(toRGB(baseColors.primary as COLOR), toRGB(light), 90))
+      toHSLA(mix(toRGB(light), toRGB(baseColors.primary as COLOR), 90))
     );
   });
 

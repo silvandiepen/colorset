@@ -58,6 +58,7 @@ describe("Css Variables", () => {
 
     // Check the variables to be the same as the output of colorset
     const input = cssVariables({ data });
+
     const expected = `--primary: hsla(var(--primary-h, ${
       data["primary-h"]
     }),var(--primary-s, ${data["primary-s"]}),var(--primary-l, ${
@@ -108,13 +109,13 @@ describe("Css Variables", () => {
 --tertiary: hsla(var(--tertiary-h, 202deg),var(--tertiary-s, 14%),var(--tertiary-l, 33%),var(--tertiary-a, 1));
 --background: var(--dark, hsla(0deg, 0%, 7%, 1));
 --foreground: var(--light, hsla(0deg, 0%, 98%, 1));
---dark-10: hsla(var(--dark-10-h, 0deg),var(--dark-10-s, 0%),var(--dark-10-l, 16%),var(--dark-10-a, 1));
---light-10: hsla(var(--light-10-h, 0deg),var(--light-10-s, 0%),var(--light-10-l, 89%),var(--light-10-a, 1));
---primary-10: hsla(var(--primary-10-h, 0deg),var(--primary-10-s, 83%),var(--primary-10-l, 46%),var(--primary-10-a, 1));
---secondary-10: hsla(var(--secondary-10-h, 120deg),var(--secondary-10-s, 83%),var(--secondary-10-l, 46%),var(--secondary-10-a, 1));
---tertiary-10: hsla(var(--tertiary-10-h, 198deg),var(--tertiary-10-s, 12%),var(--tertiary-10-l, 30%),var(--tertiary-10-a, 1));
---background-10: hsla(var(--background-10-h, 0deg),var(--background-10-s, 0%),var(--background-10-l, 16%),var(--background-10-a, 1));
---foreground-10: hsla(var(--foreground-10-h, 0deg),var(--foreground-10-s, 0%),var(--foreground-10-l, 89%),var(--foreground-10-a, 1));
+--dark-10: hsla(var(--dark-10-h, 0deg),var(--dark-10-s, 0%),var(--dark-10-l, 89%),var(--dark-10-a, 1));
+--light-10: hsla(var(--light-10-h, 0deg),var(--light-10-s, 0%),var(--light-10-l, 16%),var(--light-10-a, 1));
+--primary-10: hsla(var(--primary-10-h, 0deg),var(--primary-10-s, 6%),var(--primary-10-l, 11%),var(--primary-10-a, 1));
+--secondary-10: hsla(var(--secondary-10-h, 120deg),var(--secondary-10-s, 6%),var(--secondary-10-l, 11%),var(--secondary-10-a, 1));
+--tertiary-10: hsla(var(--tertiary-10-h, 210deg),var(--tertiary-10-s, 1%),var(--tertiary-10-l, 9%),var(--tertiary-10-a, 1));
+--background-10: hsla(var(--background-10-h, 0deg),var(--background-10-s, 0%),var(--background-10-l, 89%),var(--background-10-a, 1));
+--foreground-10: hsla(var(--foreground-10-h, 0deg),var(--foreground-10-s, 0%),var(--foreground-10-l, 16%),var(--foreground-10-a, 1));
 --dark-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --light-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --primary-text: var(--dark, hsla(0deg, 0%, 7%, 1));
@@ -122,13 +123,13 @@ describe("Css Variables", () => {
 --tertiary-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --background-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --foreground-text: var(--dark, hsla(0deg, 0%, 7%, 1));
---dark-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---light-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--dark-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--light-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --primary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---secondary-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--secondary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --tertiary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---background-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---foreground-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--background-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--foreground-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --dark-h: 0deg;
 --dark-s: 0%;
 --dark-l: 7%;
@@ -168,7 +169,7 @@ describe("Css Variables", () => {
       type: ColorType.HSLA,
       mix: [baseColors.light, baseColors.dark],
     });
-    const input = cssVariables({ data });
+    const input = cssVariables({ data }); 
     const expected = `--dark: hsla(var(--dark-h, 0deg),var(--dark-s, 0%),var(--dark-l, 7%),var(--dark-a, 1));
 --light: hsla(var(--light-h, 0deg),var(--light-s, 0%),var(--light-l, 98%),var(--light-a, 1));
 --primary: hsla(var(--primary-h, 0deg),var(--primary-s, 100%),var(--primary-l, 50%),var(--primary-a, 1));
@@ -176,13 +177,13 @@ describe("Css Variables", () => {
 --tertiary: hsla(var(--tertiary-h, 202deg),var(--tertiary-s, 14%),var(--tertiary-l, 33%),var(--tertiary-a, 1));
 --background: var(--light, hsla(0deg, 0%, 98%, 1));
 --foreground: var(--dark, hsla(0deg, 0%, 7%, 1));
---dark-10: hsla(var(--dark-10-h, 0deg),var(--dark-10-s, 0%),var(--dark-10-l, 16%),var(--dark-10-a, 1));
---light-10: hsla(var(--light-10-h, 0deg),var(--light-10-s, 0%),var(--light-10-l, 89%),var(--light-10-a, 1));
---primary-10: hsla(var(--primary-10-h, 0deg),var(--primary-10-s, 100%),var(--primary-10-l, 55%),var(--primary-10-a, 1));
---secondary-10: hsla(var(--secondary-10-h, 120deg),var(--secondary-10-s, 100%),var(--secondary-10-l, 55%),var(--secondary-10-a, 1));
---tertiary-10: hsla(var(--tertiary-10-h, 198deg),var(--tertiary-10-s, 14%),var(--tertiary-10-l, 39%),var(--tertiary-10-a, 1));
---background-10: hsla(var(--background-10-h, 0deg),var(--background-10-s, 0%),var(--background-10-l, 89%),var(--background-10-a, 1));
---foreground-10: hsla(var(--foreground-10-h, 0deg),var(--foreground-10-s, 0%),var(--foreground-10-l, 16%),var(--foreground-10-a, 1));
+--dark-10: hsla(var(--dark-10-h, 0deg),var(--dark-10-s, 0%),var(--dark-10-l, 89%),var(--dark-10-a, 1));
+--light-10: hsla(var(--light-10-h, 0deg),var(--light-10-s, 0%),var(--light-10-l, 16%),var(--light-10-a, 1));
+--primary-10: hsla(var(--primary-10-h, 0deg),var(--primary-10-s, 71%),var(--primary-10-l, 93%),var(--primary-10-a, 1));
+--secondary-10: hsla(var(--secondary-10-h, 120deg),var(--secondary-10-s, 71%),var(--secondary-10-l, 93%),var(--secondary-10-a, 1));
+--tertiary-10: hsla(var(--tertiary-10-h, 210deg),var(--tertiary-10-s, 13%),var(--tertiary-10-l, 92%),var(--tertiary-10-a, 1));
+--background-10: hsla(var(--background-10-h, 0deg),var(--background-10-s, 0%),var(--background-10-l, 16%),var(--background-10-a, 1));
+--foreground-10: hsla(var(--foreground-10-h, 0deg),var(--foreground-10-s, 0%),var(--foreground-10-l, 89%),var(--foreground-10-a, 1));
 --dark-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --light-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --primary-text: var(--dark, hsla(0deg, 0%, 7%, 1));
@@ -190,13 +191,13 @@ describe("Css Variables", () => {
 --tertiary-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --background-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --foreground-text: var(--light, hsla(0deg, 0%, 98%, 1));
---dark-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---light-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--dark-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--light-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
 --primary-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --secondary-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
---tertiary-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
---background-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
---foreground-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
+--tertiary-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
+--background-10-text: var(--light, hsla(0deg, 0%, 98%, 1));
+--foreground-10-text: var(--dark, hsla(0deg, 0%, 7%, 1));
 --dark-h: 0deg;
 --dark-s: 0%;
 --dark-l: 7%;

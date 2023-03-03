@@ -1,4 +1,4 @@
-import { ColorType, toHSLA,mix, toRGB } from "@sil/color";
+import { ColorType, toHSLA, mix, toRGB } from "@sil/color";
 import { createColorSet } from "./createColorSet";
 
 describe(`Create Color Set`, () => {
@@ -15,7 +15,7 @@ describe(`Create Color Set`, () => {
   const expectedDefault = {
     dark: toHSLA(baseColors.dark),
     "dark-text": toHSLA(baseColors.light),
-    "dark-50": toHSLA(mix(toRGB(baseColors.dark), toRGB(baseColors.light), 50)),
+    "dark-50": toHSLA(mix(toRGB(baseColors.light), toRGB(baseColors.dark), 50)),
     "dark-50-text": toHSLA(baseColors.dark),
     "dark-h": `${toHSLA(baseColors.dark).h}deg`,
     "dark-s": `${toHSLA(baseColors.dark).s}%`,
@@ -24,7 +24,9 @@ describe(`Create Color Set`, () => {
 
     background: toHSLA(baseColors.dark),
     "background-text": toHSLA(baseColors.light),
-    "background-50": toHSLA(mix(toRGB(baseColors.dark), toRGB(baseColors.light), 50)),
+    "background-50": toHSLA(
+      mix(toRGB(baseColors.light), toRGB(baseColors.dark), 50)
+    ),
     "background-50-text": toHSLA(baseColors.dark),
     "background-h": `${toHSLA(baseColors.dark).h}deg`,
     "background-s": `${toHSLA(baseColors.dark).s}%`,
@@ -33,7 +35,9 @@ describe(`Create Color Set`, () => {
 
     light: toHSLA(baseColors.light),
     "light-text": toHSLA(baseColors.dark),
-    "light-50": toHSLA(mix(toRGB(baseColors.light), toRGB(baseColors.dark), 50)),
+    "light-50": toHSLA(
+      mix(toRGB(baseColors.dark), toRGB(baseColors.light), 50)
+    ),
     "light-50-text": toHSLA(baseColors.dark),
     "light-h": `${toHSLA(baseColors.light).h}deg`,
     "light-s": `${toHSLA(baseColors.light).s}%`,
@@ -41,7 +45,9 @@ describe(`Create Color Set`, () => {
     "light-a": toHSLA(baseColors.light).a,
     foreground: toHSLA(baseColors.light),
     "foreground-text": toHSLA(baseColors.dark),
-    "foreground-50": toHSLA(mix(toRGB(baseColors.light), toRGB(baseColors.dark), 50)),
+    "foreground-50": toHSLA(
+      mix(toRGB(baseColors.dark), toRGB(baseColors.light), 50)
+    ),
     "foreground-50-text": toHSLA(baseColors.dark),
     "foreground-h": `${toHSLA(baseColors.light).h}deg`,
     "foreground-s": `${toHSLA(baseColors.light).s}%`,
@@ -49,7 +55,9 @@ describe(`Create Color Set`, () => {
     "foreground-a": toHSLA(baseColors.light).a,
     primary: toHSLA(baseColors.primary),
     "primary-text": toHSLA(baseColors.dark),
-    "primary-50":toHSLA(mix(toRGB(baseColors.primary), toRGB(baseColors.dark), 50)),
+    "primary-50": toHSLA(
+      mix(toRGB(baseColors.dark), toRGB(baseColors.primary), 50)
+    ),
     "primary-50-text": toHSLA(baseColors.light),
     "primary-h": `${toHSLA(baseColors.primary).h}deg`,
     "primary-s": `${toHSLA(baseColors.primary).s}%`,
@@ -61,11 +69,15 @@ describe(`Create Color Set`, () => {
     "secondary-s": `${toHSLA(baseColors.secondary).s}%`,
     "secondary-l": `${toHSLA(baseColors.secondary).l}%`,
     "secondary-a": toHSLA(baseColors.secondary).a,
-    "secondary-50": toHSLA(mix(toRGB(baseColors.secondary), toRGB(baseColors.dark), 50)),
+    "secondary-50": toHSLA(
+      mix(toRGB(baseColors.dark), toRGB(baseColors.secondary), 50)
+    ),
     "secondary-50-text": toHSLA(baseColors.light),
     tertiary: toHSLA(baseColors.tertiary),
     "tertiary-text": toHSLA(baseColors.light),
-    "tertiary-50": toHSLA(mix(toRGB(baseColors.tertiary), toRGB(baseColors.dark), 50)), 
+    "tertiary-50": toHSLA(
+      mix(toRGB(baseColors.dark), toRGB(baseColors.tertiary), 50)
+    ),
     "tertiary-50-text": toHSLA(baseColors.light),
     "tertiary-h": `${toHSLA(baseColors.tertiary).h}deg`,
     "tertiary-s": `${toHSLA(baseColors.tertiary).s}%`,
